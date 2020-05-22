@@ -1,5 +1,14 @@
 package com.example.jvm;
 
+/**
+ * 启动参数
+ -verbose:gc
+ -Xms20m
+ -Xmx20m
+ -Xmn10m
+ -XX:+PrintGCDetails
+ -XX:SurvivorRatio=8
+ */
 public class MemoryTest6 {
     public static void main(String[] args) {
         // 注： 数组长度根据JKD版本可能需要变化

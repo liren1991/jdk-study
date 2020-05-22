@@ -236,9 +236,26 @@ package com.example.jvm;
  *
  *
  */
+
+/**
+ * 参数  PrintGCDateStamps 只能jdk8
+ * -verbose:gc
+ * -Xms10m
+ * -Xmx10m
+ * -XX:+UseG1GC
+ * -XX:+PrintGCDetails
+ * -XX:+PrintGCDateStamps
+ * -XX:MaxGCPauseMillis=200m
+ */
 public class G1GCTest1 {
 
     public static void main(String[] args) {
+        int size = 1024*1024;
+        byte[] bytes1 = new byte[size];
+        byte[] bytes2 = new byte[size];
+        byte[] bytes3 = new byte[size];
+        byte[] bytes4 = new byte[size];
 
+        // 输出参考：  GC 回收阶段
     }
 }

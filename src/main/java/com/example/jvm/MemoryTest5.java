@@ -153,12 +153,12 @@ package com.example.jvm;
 
 /**
  * 启动参数
- * -verbose:gc
- * -Xms20m
- * -Xmx20m
- * -Xmn10m
- * -XX:+PrintGCDetails
- * -XX:SurvivorRatio=8
+ -verbose:gc
+ -Xms20m
+ -Xmx20m
+ -Xmn10m
+ -XX:+PrintGCDetails
+ -XX:SurvivorRatio=8
  */
 public class MemoryTest5 {
     public static void main(String[] args) {

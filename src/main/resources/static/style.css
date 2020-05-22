@@ -6369,7 +6369,7 @@ Page structure and elements
   background-color: #111 !important; }
 
 body {
-  background: #ddd url("body.png") repeat scroll top left; }
+  background: #ddd url("/image/body.png") repeat scroll top left; }
 
 main {
   padding-top: 1em; }

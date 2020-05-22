@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="style.css">
     <script src="jquery.js"></script>
-    <script src="bootstrap.js"></script>
 </head>
 
 <body>
@@ -29,27 +28,43 @@
             <div class="sidebar-box">
                 <h4>目录</h4>
                 <div class="list-group list-group-root">
-                    <a class="list-group-item" href="index.html">Home Page</a>
-                    <a class="list-group-item" href="examples.html">Style Examples</a>
-                    <a class="list-group-item" href="three-column.html">Three column layout example</a>
-                    <a class="list-group-item" href="#">Sed aliquam libero ut velit bibendum</a>
-                    <a class="list-group-item" href="#">Maecenas condimentum velit vitae</a>
+                    <a class="list-group-item" href="index.html">主页</a>
+                    <a class="list-group-item" href="javascript:void(0)" onclick="getContext('jvm_classLoader.html')">java类的加载机制</a>
+                    <a class="list-group-item" href="javascript:void(0)" onclick="getContext('jvm_memory.html')">JVM内存结构</a>
+                    <a class="list-group-item" href="javascript:void(0)" onclick="getContext('jvm_metaspace.html')">Java 元空间</a>
+                    <a class="list-group-item" href="javascript:void(0)" onclick="getContext('cms_detail.html')">CMS收集器</a>
+                    <a class="list-group-item" href="javascript:void(0)" onclick="getContext('G1_detail.html')">G1收集器</a>
                 </div>
             </div>
         </aside>
         <!-- 中间主体 -->
         <div class="col-md-8">
-            <article id="mainContext"></article>
+            <article id="mainContext">
+
+            </article>
         </div>
     </div>
 </main>
-
-<script>
-    $.
-
-
-
-
+<script src="bootstrap.js"></script>
+<script type="text/javascript">
+     function getContext(url){
+         var xmlhttp;
+	    if (window.XMLHttpRequest){
+		    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		    xmlhttp=new XMLHttpRequest();
+	    }else{
+		    // IE6, IE5 浏览器执行代码
+		    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	    }
+	    xmlhttp.onreadystatechange=function()
+	    {
+		    if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			    document.getElementById("mainContext").innerHTML=xmlhttp.responseText;
+		    }
+	    }
+	    xmlhttp.open("GET",url,true);
+	    xmlhttp.send();
+     }
 </script>
 </body>
 </html>
