@@ -1,14 +1,14 @@
 package com.example.jdkstudy.jdk;
 
 import org.junit.jupiter.api.Test;
-import sun.misc.Unsafe;
+//import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ReentrantLockTest {
-    private static Unsafe unsafe;
+  /*  private static Unsafe unsafe;
     static {
         Field theUnsafe = null;
         try {
@@ -92,7 +92,7 @@ public class ReentrantLockTest {
         }
     }
 
-
+*/
 }
 
 /**
