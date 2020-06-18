@@ -1,6 +1,8 @@
 package com.example.current;
 
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * 在调用wait方法时，线程必须要持有被调用对象的锁，当调用wait方法后，线程就会释放掉该对象的锁（monitor）
  * 在调用 Thread 类的sleep方法时，线程时不会释放掉对象的锁
@@ -28,6 +30,77 @@ public class WaitTest {
         increaseThread.start();
         decreaseThread.start();
     }
+}
 
+class IncreaseThread extends Thread{
+
+    private MyObject myObject;
+
+    public IncreaseThread(MyObject myObject) {
+        this.myObject = myObject;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 30; i++) {
+            try {
+                TimeUnit.MILLISECONDS.sleep((long) (Math.random()*1000));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            myObject.increase();
+        }
+    }
+}
+
+class DecreaseThread extends Thread{
+
+    private MyObject myObject;
+
+    public DecreaseThread(MyObject myObject) {
+        this.myObject = myObject;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 30; i++) {
+            try {
+                TimeUnit.MILLISECONDS.sleep((long) (Math.random()*100));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            myObject.decrease();
+        }
+    }
+}
+
+class MyObject {
+    private int counter;
+
+    public synchronized void increase(){
+        while (counter != 0) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        counter++;
+        System.out.println(counter);
+        notify();
+    }
+
+    public synchronized void decrease(){
+        while (counter == 0) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        counter --;
+        System.out.println(counter);
+        notify();
+    }
 
 }
