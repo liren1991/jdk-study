@@ -1,38 +1,64 @@
 package com.example.current;
 
 
+import java.util.Arrays;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.IntStream;
 
-/**
- *  关于Lock与synchronize关键字在锁的处理上的重要差别
- *      1. 锁的获取方式：前者是通过程序代码的方式由开发者手动获取，后者是通过JVM来获取的；
- *      2. 具体实现方式：前者是通过Java代码的方式来实现，后者是通过JVM底层来实现的（无需开发者关注）
- *      3. 所得释放方式： 前者必须通过unlock方法在finally块中手动释放，后者是通过JVM来释放（无需开发者关注）
- *      4. 锁的具体类型：前者提供了多种，如公平锁、非公平锁；后者与前者均提供了可重入锁
- *
- */
+
+
 public class LockTest {
+    public static void main(String[] args) {
+        BoundedBuffer boundedBuffer = new BoundedBuffer();
+        IntStream.range(0,10).forEach(i->new Thread(()->{
+            try {
+                boundedBuffer.put("hello");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start());
+    }
 
-    private Lock lock = new ReentrantLock();
+}
 
-    public void getMethod1(){
+class BoundedBuffer {
+    final Lock lock = new ReentrantLock();
+    final Condition notFull = lock.newCondition();
+    final Condition notEmpty = lock.newCondition();
+
+    final Object[] items = new Object[10];
+    int putIndex, takeIndex, count;
+
+    public void put(Object x) throws InterruptedException {
+        lock.lock();
         try {
-            lock.lock();
-            System.out.println("myMethod invoked");
-        }finally {
+            while (count == items.length)
+                notFull.await();
+            items[putIndex] = x;
+            if (++putIndex == items.length) putIndex = 0;
+            ++count;
+            System.out.println(" put method: " + Arrays.toString(items));
+            notEmpty.signal();
+        } finally {
             lock.unlock();
         }
     }
 
-    public void getMethod2(){
+    public Object take() throws InterruptedException {
+        lock.lock();
         try {
-            lock.lock();
-            System.out.println("myMethod invoked");
-        }finally {
+            while (count == 0)
+                notEmpty.await();
+            Object x = items[takeIndex];
+            if (++takeIndex == items.length) takeIndex = 0;
+            --count;
+            System.out.println(" put method: " + Arrays.toString(items));
+            notFull.signal();
+            return x;
+        } finally {
             lock.unlock();
         }
     }
-
-
 }
