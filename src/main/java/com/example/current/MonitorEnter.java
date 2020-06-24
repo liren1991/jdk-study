@@ -9,6 +9,15 @@ package com.example.current;
  *      jvm使用了ACC_SYNCHRONIZED访问标志来区分一个方法是否为同步方法，当方法被调用时，调用指令会检查该方法是否拥有ACC_SYNCHRONIZED标志
  *      如果有，那么执行线程会先持有方法所在对象的monitor对象，然后再去执行方法体；在该方法执行期间，其他任何线程均无法在获取到这个monitor对象，
  *      当线程执行完后，它会释放掉这个monitor对象
+ * 4. 编译器对锁的优化措施：锁消除。JIT编译器可以在动态编译同步代码时，使用一种叫做逃逸分析的技术，来通过该项技术判断程序中所使用的锁对象是否只
+ *      被一个线程所使用，而没有散布到其它线程当中；如果情况就是这样的话，那么JIT编译器在编译这个同步代码时就不会生成synchronize关键字所标识
+ *      的锁的申请与释放机器码，从而消除了锁的使用流程
+ *      public void method（）{
+ *          Object object = new Object（）；
+ *          synchronize （object）{
+ *              System.out.println();
+ *          }
+ *      }
  * 编译后使用查看字节码:  D:\java\workspace\jdk-study\target\classes>javap -v com.example.current.MonitorEnter
  */
 

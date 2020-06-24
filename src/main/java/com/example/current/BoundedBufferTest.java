@@ -8,13 +8,20 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
 
 
-
 public class BoundedBufferTest {
     public static void main(String[] args) {
         BoundedBuffer boundedBuffer = new BoundedBuffer();
-        IntStream.range(0,10).forEach(i->new Thread(()->{
+        IntStream.range(0, 10).forEach(i -> new Thread(() -> {
             try {
                 boundedBuffer.put("hello");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start());
+
+        IntStream.range(0, 10).forEach(i -> new Thread(() -> {
+            try {
+                boundedBuffer.take();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -52,6 +59,7 @@ class BoundedBuffer {
             while (count == 0)
                 notEmpty.await();
             Object x = items[takeIndex];
+            items[takeIndex] = null;
             if (++takeIndex == items.length) takeIndex = 0;
             --count;
             System.out.println(" put method: " + Arrays.toString(items));
