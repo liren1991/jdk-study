@@ -1,0 +1,334 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x000000005cadc156, pid=9640, tid=0x00000000000025b0
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_221-b11) (build 1.8.0_221-b11)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.221-b11 mixed mode windows-amd64 compressed oops)
+# Problematic frame:
+# V  [jvm.dll+0x29c156]
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000001dbd000):  JavaThread "main" [_thread_in_vm, id=9648, stack(0x0000000002770000,0x0000000002870000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0xffffffffffffffff
+
+Registers:
+RAX=0xed7987eded7aec36, RBX=0x000000001bd72f18, RCX=0xed7987eded7aec36, RDX=0x000000000286cbf8
+RSP=0x000000000286cb00, RBP=0x000000000286cbf0, RSI=0xed7987eded7aec36, RDI=0x0000000001dbd000
+R8 =0x000000000286cbf0, R9 =0x0000000001e8df30, R10=0x00000000029d1dc4, R11=0x000000005ca6ce30
+R12=0x0000000000000000, R13=0x000000001bd72f18, R14=0x000000000286cbf8, R15=0x0000000001dbd000
+RIP=0x000000005cadc156, EFLAGS=0x0000000000010206
+
+Top of Stack: (sp=0x000000000286cb00)
+0x000000000286cb00:   000000000286cbf0 000000001c141f72
+0x000000000286cb10:   000000001bd72f18 0000000001dbd000
+0x000000000286cb20:   000000001bd72f18 000000005ca26fcc
+0x000000000286cb30:   000000000286ce68 0000000001dbd000
+0x000000000286cb40:   000000001bd72f18 0000000000000002
+0x000000000286cb50:   00000000029b83fd 00000000029d1df0
+0x000000000286cb60:   000000001bd72f18 000000000286cbd0
+0x000000000286cb70:   0000000000000002 0000000001dbd000
+0x000000000286cb80:   000000000286cc60 00000000029d17c2
+0x000000000286cb90:   000000000286cb90 000000001bd72f18
+0x000000000286cba0:   000000000286cbf8 000000001bd9f4b8
+0x000000000286cbb0:   0000000000000000 000000001bd72f18
+0x000000000286cbc0:   0000000000000000 000000000286cbf0
+0x000000000286cbd0:   000000000286cc40 00000000029b83fd
+0x000000000286cbe0:   0000000000000000 00000000029c7a58
+0x000000000286cbf0:   000000076d570cb8 000000076b5089b0 
+
+Instructions: (pc=0x000000005cadc156)
+0x000000005cadc136:   79 0a 48 8b 4b 28 ff 15 26 61 34 00 48 83 c4 20
+0x000000005cadc146:   5b c3 cc cc cc cc cc cc cc cc 40 53 48 83 ec 20
+0x000000005cadc156:   48 83 39 00 48 8b d9 75 25 4c 8d 0d 02 48 37 00
+0x000000005cadc166:   4c 8d 05 73 96 38 00 48 8d 0d cc 19 3a 00 ba ad 
+
+
+Register to memory mapping:
+
+RAX=0xed7987eded7aec36 is an unknown value
+RBX={method} {0x000000001bd72f20} 'unpark' '(Ljava/lang/Object;)V' in 'sun/misc/Unsafe'
+RCX=0xed7987eded7aec36 is an unknown value
+RDX=0x000000000286cbf8 is pointing into the stack for thread: 0x0000000001dbd000
+RSP=0x000000000286cb00 is pointing into the stack for thread: 0x0000000001dbd000
+RBP=0x000000000286cbf0 is pointing into the stack for thread: 0x0000000001dbd000
+RSI=0xed7987eded7aec36 is an unknown value
+RDI=0x0000000001dbd000 is a thread
+R8 =0x000000000286cbf0 is pointing into the stack for thread: 0x0000000001dbd000
+R9 =0x0000000001e8df30 is an unknown value
+R10=0x00000000029d1dc4 is at code_begin+1700 in an Interpreter codelet
+method entry point (kind = native)  [0x00000000029d1720, 0x00000000029d27e0]  4288 bytes
+R11=0x000000005ca6ce30 is an unknown value
+R12=0x0000000000000000 is an unknown value
+R13={method} {0x000000001bd72f20} 'unpark' '(Ljava/lang/Object;)V' in 'sun/misc/Unsafe'
+R14=0x000000000286cbf8 is pointing into the stack for thread: 0x0000000001dbd000
+R15=0x0000000001dbd000 is a thread
+
+
+Stack: [0x0000000002770000,0x0000000002870000],  sp=0x000000000286cb00,  free space=1010k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x29c156]
+V  [jvm.dll+0x1e6fcc]
+C  0x00000000029d1df0
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  sun.misc.Unsafe.unpark(Ljava/lang/Object;)V+0
+j  com.example.jdkstudy.jdk.ReentrantLockTest.test2()V+26
+v  ~StubRoutines::call_stub
+j  sun.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0
+j  sun.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+100
+j  sun.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+56
+j  org.junit.platform.commons.util.ReflectionUtils.invokeMethod(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+41
+j  org.junit.jupiter.engine.execution.MethodInvocation.proceed()Ljava/lang/Object;+16
+j  org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed()Ljava/lang/Object;+22
+j  org.junit.jupiter.engine.extension.TimeoutExtension.intercept(Lorg/junit/jupiter/api/extension/InvocationInterceptor$Invocation;Lorg/junit/jupiter/api/extension/ReflectiveInvocationContext;Lorg/junit/jupiter/api/extension/ExtensionContext;Lorg/junit/jupiter/engine/extension/TimeoutDuration;Lorg/junit/jupiter/engine/extension/TimeoutExtension$TimeoutProvider;)Ljava/lang/Object;+28
+j  org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(Lorg/junit/jupiter/api/extension/InvocationInterceptor$Invocation;Lorg/junit/jupiter/api/extension/ReflectiveInvocationContext;Lorg/junit/jupiter/api/extension/ExtensionContext;Lorg/junit/jupiter/engine/extension/TimeoutExtension$TimeoutProvider;)Ljava/lang/Object;+31
+j  org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(Lorg/junit/jupiter/api/extension/InvocationInterceptor$Invocation;Lorg/junit/jupiter/api/extension/ReflectiveInvocationContext;Lorg/junit/jupiter/api/extension/ExtensionContext;)V+9
+j  org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor$$Lambda$95.apply(Lorg/junit/jupiter/api/extension/InvocationInterceptor;Lorg/junit/jupiter/api/extension/InvocationInterceptor$Invocation;Lorg/junit/jupiter/api/extension/ReflectiveInvocationContext;Lorg/junit/jupiter/api/extension/ExtensionContext;)V+5
+j  org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(Lorg/junit/jupiter/engine/execution/ExecutableInvoker$ReflectiveInterceptorCall$VoidMethodInterceptorCall;Lorg/junit/jupiter/api/extension/InvocationInterceptor;Lorg/junit/jupiter/api/extension/InvocationInterceptor$Invocation;Lorg/junit/jupiter/api/extension/ReflectiveInvocationContext;Lorg/junit/jupiter/api/extension/ExtensionContext;)Ljava/lang/Void;+6
+j  org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall$$Lambda$96.apply(Lorg/junit/jupiter/api/extension/InvocationInterceptor;Lorg/junit/jupiter/api/extension/InvocationInterceptor$Invocation;Lorg/junit/jupiter/api/extension/ReflectiveInvocationContext;Lorg/junit/jupiter/api/extension/ExtensionContext;)Ljava/lang/Object;+9
+j  org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(Lorg/junit/jupiter/engine/execution/ExecutableInvoker$ReflectiveInterceptorCall;Lorg/junit/jupiter/api/extension/ReflectiveInvocationContext;Lorg/junit/jupiter/api/extension/ExtensionContext;Lorg/junit/jupiter/api/extension/InvocationInterceptor;Lorg/junit/jupiter/api/extension/InvocationInterceptor$Invocation;)Ljava/lang/Object;+6
+j  org.junit.jupiter.engine.execution.ExecutableInvoker$$Lambda$231.apply(Lorg/junit/jupiter/api/extension/InvocationInterceptor;Lorg/junit/jupiter/api/extension/InvocationInterceptor$Invocation;)Ljava/lang/Object;+14
+j  org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed()Ljava/lang/Object;+12
+j  org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(Lorg/junit/jupiter/api/extension/InvocationInterceptor$Invocation;)Ljava/lang/Object;+1
+j  org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(Lorg/junit/jupiter/api/extension/InvocationInterceptor$Invocation;Lorg/junit/jupiter/engine/execution/InvocationInterceptorChain$InterceptorCall;Ljava/util/List;)Ljava/lang/Object;+24
+j  org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(Lorg/junit/jupiter/api/extension/InvocationInterceptor$Invocation;Lorg/junit/jupiter/engine/extension/ExtensionRegistry;Lorg/junit/jupiter/engine/execution/InvocationInterceptorChain$InterceptorCall;)Ljava/lang/Object;+31
+j  org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(Lorg/junit/jupiter/api/extension/InvocationInterceptor$Invocation;Lorg/junit/jupiter/api/extension/ReflectiveInvocationContext;Lorg/junit/jupiter/api/extension/ExtensionContext;Lorg/junit/jupiter/engine/extension/ExtensionRegistry;Lorg/junit/jupiter/engine/execution/ExecutableInvoker$ReflectiveInterceptorCall;)Ljava/lang/Object;+15
+j  org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(Ljava/lang/reflect/Method;Ljava/lang/Object;Lorg/junit/jupiter/api/extension/ExtensionContext;Lorg/junit/jupiter/engine/extension/ExtensionRegistry;Lorg/junit/jupiter/engine/execution/ExecutableInvoker$ReflectiveInterceptorCall;)Ljava/lang/Object;+56
+j  org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(Lorg/junit/jupiter/api/extension/ExtensionContext;Lorg/junit/jupiter/engine/execution/JupiterEngineExecutionContext;)V+28
+j  org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor$$Lambda$241.execute()V+12
+j  org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(Lorg/junit/platform/engine/support/hierarchical/ThrowableCollector$Executable;)V+1
+j  org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(Lorg/junit/jupiter/engine/execution/JupiterEngineExecutionContext;Lorg/junit/platform/engine/support/hierarchical/Node$DynamicTestExecutor;)V+21
+j  org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(Lorg/junit/jupiter/engine/execution/JupiterEngineExecutionContext;Lorg/junit/platform/engine/support/hierarchical/Node$DynamicTestExecutor;)Lorg/junit/jupiter/engine/execution/JupiterEngineExecutionContext;+44
+j  org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(Lorg/junit/platform/engine/support/hierarchical/EngineExecutionContext;Lorg/junit/platform/engine/support/hierarchical/Node$DynamicTestExecutor;)Lorg/junit/platform/engine/support/hierarchical/EngineExecutionContext;+6
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5()V+79
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$174.execute()V+4
+j  org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(Lorg/junit/platform/engine/support/hierarchical/ThrowableCollector$Executable;)V+1
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(Lorg/junit/platform/engine/support/hierarchical/EngineExecutionContext;)V+15
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$173.invoke(Lorg/junit/platform/engine/support/hierarchical/EngineExecutionContext;)V+5
+j  org.junit.platform.engine.support.hierarchical.Node.around(Lorg/junit/platform/engine/support/hierarchical/EngineExecutionContext;Lorg/junit/platform/engine/support/hierarchical/Node$Invocation;)V+2
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8()V+14
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$172.execute()V+4
+j  org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(Lorg/junit/platform/engine/support/hierarchical/ThrowableCollector$Executable;)V+1
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively()V+31
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.execute()V+55
+j  org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService$$Lambda$178.accept(Ljava/lang/Object;)V+4
+j  java.util.ArrayList.forEach(Ljava/util/function/Consumer;)V+47
+j  org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(Ljava/util/List;)V+6
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5()V+116
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$174.execute()V+4
+j  org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(Lorg/junit/platform/engine/support/hierarchical/ThrowableCollector$Executable;)V+1
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(Lorg/junit/platform/engine/support/hierarchical/EngineExecutionContext;)V+15
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$173.invoke(Lorg/junit/platform/engine/support/hierarchical/EngineExecutionContext;)V+5
+j  org.junit.platform.engine.support.hierarchical.Node.around(Lorg/junit/platform/engine/support/hierarchical/EngineExecutionContext;Lorg/junit/platform/engine/support/hierarchical/Node$Invocation;)V+2
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8()V+14
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$172.execute()V+4
+j  org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(Lorg/junit/platform/engine/support/hierarchical/ThrowableCollector$Executable;)V+1
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively()V+31
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.execute()V+55
+j  org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService$$Lambda$178.accept(Ljava/lang/Object;)V+4
+j  java.util.ArrayList.forEach(Ljava/util/function/Consumer;)V+47
+j  org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(Ljava/util/List;)V+6
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5()V+116
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$174.execute()V+4
+j  org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(Lorg/junit/platform/engine/support/hierarchical/ThrowableCollector$Executable;)V+1
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(Lorg/junit/platform/engine/support/hierarchical/EngineExecutionContext;)V+15
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$173.invoke(Lorg/junit/platform/engine/support/hierarchical/EngineExecutionContext;)V+5
+j  org.junit.platform.engine.support.hierarchical.Node.around(Lorg/junit/platform/engine/support/hierarchical/EngineExecutionContext;Lorg/junit/platform/engine/support/hierarchical/Node$Invocation;)V+2
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8()V+14
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask$$Lambda$172.execute()V+4
+j  org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(Lorg/junit/platform/engine/support/hierarchical/ThrowableCollector$Executable;)V+1
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively()V+31
+j  org.junit.platform.engine.support.hierarchical.NodeTestTask.execute()V+55
+j  org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(Lorg/junit/platform/engine/support/hierarchical/HierarchicalTestExecutorService$TestTask;)Ljava/util/concurrent/Future;+1
+j  org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute()Ljava/util/concurrent/Future;+74
+j  org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(Lorg/junit/platform/engine/ExecutionRequest;)V+31
+j  org.junit.platform.launcher.core.DefaultLauncher.execute(Lorg/junit/platform/engine/TestEngine;Lorg/junit/platform/engine/ExecutionRequest;)V+2
+j  org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(Lorg/junit/platform/launcher/core/InternalTestPlan;Lorg/junit/platform/launcher/core/Root;Lorg/junit/platform/engine/ConfigurationParameters;Lorg/junit/platform/launcher/TestExecutionListener;)V+76
+j  org.junit.platform.launcher.core.DefaultLauncher$$Lambda$132.accept(Ljava/lang/Object;)V+20
+j  org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(Lorg/junit/platform/engine/ConfigurationParameters;Lorg/junit/platform/launcher/core/TestExecutionListenerRegistry;Ljava/util/function/Consumer;)V+43
+j  org.junit.platform.launcher.core.DefaultLauncher.execute(Lorg/junit/platform/launcher/core/InternalTestPlan;[Lorg/junit/platform/launcher/TestExecutionListener;)V+33
+j  org.junit.platform.launcher.core.DefaultLauncher.execute(Lorg/junit/platform/launcher/LauncherDiscoveryRequest;[Lorg/junit/platform/launcher/TestExecutionListener;)V+33
+j  com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs([Ljava/lang/String;Ljava/lang/String;IZ)I+202
+j  com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(Lcom/intellij/rt/junit/IdeaTestRunner;[Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;IZ)I+22
+j  com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart([Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;)I+116
+j  com.intellij.rt.junit.JUnitStarter.main([Ljava/lang/String;)V+116
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000000001f419800 JavaThread "Service Thread" daemon [_thread_blocked, id=8712, stack(0x0000000020200000,0x0000000020300000)]
+  0x000000001f3c9800 JavaThread "C1 CompilerThread3" daemon [_thread_blocked, id=5468, stack(0x0000000020020000,0x0000000020120000)]
+  0x000000001f3af800 JavaThread "C2 CompilerThread2" daemon [_thread_blocked, id=7396, stack(0x000000001fcc0000,0x000000001fdc0000)]
+  0x000000001f3af000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=6348, stack(0x000000001fe20000,0x000000001ff20000)]
+  0x000000001f3ab000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=2800, stack(0x000000001fb70000,0x000000001fc70000)]
+  0x000000001d7da800 JavaThread "JDWP Command Reader" daemon [_thread_in_native, id=9452, stack(0x000000001f1e0000,0x000000001f2e0000)]
+  0x000000001d7d7800 JavaThread "JDWP Event Helper Thread" daemon [_thread_blocked, id=10928, stack(0x000000001f010000,0x000000001f110000)]
+  0x000000001d7d6800 JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_blocked, id=10948, stack(0x000000001eeb0000,0x000000001efb0000)]
+  0x000000001d7b0000 JavaThread "Attach Listener" daemon [_thread_blocked, id=7524, stack(0x000000001eac0000,0x000000001ebc0000)]
+  0x000000001d7af000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=9120, stack(0x000000001ebf0000,0x000000001ecf0000)]
+  0x000000001c6ea000 JavaThread "Finalizer" daemon [_thread_blocked, id=9580, stack(0x000000001e850000,0x000000001e950000)]
+  0x000000001c6e3000 JavaThread "Reference Handler" daemon [_thread_blocked, id=8324, stack(0x000000001e970000,0x000000001ea70000)]
+=>0x0000000001dbd000 JavaThread "main" [_thread_in_vm, id=9648, stack(0x0000000002770000,0x0000000002870000)]
+
+Other Threads:
+  0x000000001c6d7800 VMThread [stack: 0x000000001e6f0000,0x000000001e7f0000] [id=10344]
+  0x000000001f41e800 WatcherThread [stack: 0x0000000020360000,0x0000000020460000] [id=10588]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x00000006c1e00000, size: 4066 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x00000007c0000000
+
+Heap:
+ PSYoungGen      total 76288K, used 35451K [0x000000076b500000, 0x0000000770a00000, 0x00000007c0000000)
+  eden space 65536K, 54% used [0x000000076b500000,0x000000076d79ee30,0x000000076f500000)
+  from space 10752K, 0% used [0x000000076ff80000,0x000000076ff80000,0x0000000770a00000)
+  to   space 10752K, 0% used [0x000000076f500000,0x000000076f500000,0x000000076ff80000)
+ ParOldGen       total 175104K, used 0K [0x00000006c1e00000, 0x00000006cc900000, 0x000000076b500000)
+  object space 175104K, 0% used [0x00000006c1e00000,0x00000006c1e00000,0x00000006cc900000)
+ Metaspace       used 7978K, capacity 8862K, committed 8960K, reserved 1056768K
+  class space    used 1042K, capacity 1249K, committed 1280K, reserved 1048576K
+
+Card table byte_map: [0x0000000011d70000,0x0000000012570000] byte_map_base: 0x000000000e761000
+
+Marking Bits: (ParMarkBitMap*) 0x000000005d065ce0
+ Begin Bits: [0x00000000135e0000, 0x0000000017568000)
+ End Bits:   [0x0000000017568000, 0x000000001b4f0000)
+
+Polling page: 0x0000000000130000
+
+CodeCache: size=245760Kb used=3492Kb max_used=3535Kb free=242267Kb
+ bounds [0x00000000029b0000, 0x0000000002d30000, 0x00000000119b0000]
+ total_blobs=1148 nmethods=869 adapters=200
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 0.695 Thread 0x000000001f3c9800 nmethod 863 0x0000000002d0a250 code [0x0000000002d0a3a0, 0x0000000002d0a4b0]
+Event: 0.696 Thread 0x000000001f3af000 nmethod 858 0x0000000002d06790 code [0x0000000002d06900, 0x0000000002d06d18]
+Event: 0.698 Thread 0x000000001f3af800  864       4       sun.net.www.ParseUtil::encodePath (336 bytes)
+Event: 0.700 Thread 0x000000001f3c9800  865       3       java.lang.invoke.DirectMethodHandle::shouldBeInitialized (123 bytes)
+Event: 0.700 Thread 0x000000001f3c9800 nmethod 865 0x0000000002d097d0 code [0x0000000002d099a0, 0x0000000002d0a0e8]
+Event: 0.700 Thread 0x000000001f3c9800  866       1       java.util.logging.LogManager::access$500 (5 bytes)
+Event: 0.700 Thread 0x000000001f3c9800 nmethod 866 0x0000000002d064d0 code [0x0000000002d06620, 0x0000000002d06710]
+Event: 0.703 Thread 0x000000001f3c9800  867       3       java.lang.invoke.MethodHandles$Lookup::getDirectMethodCommon (271 bytes)
+Event: 0.704 Thread 0x000000001f3c9800 nmethod 867 0x0000000002d0c010 code [0x0000000002d0c320, 0x0000000002d0ddf8]
+Event: 0.704 Thread 0x000000001f3c9800  868       3       java.lang.invoke.MethodHandles$Lookup::checkMethod (83 bytes)
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (2 events):
+Event: 0.504 Thread 0x0000000001dbd000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002bd984c method=sun.misc.MetaIndex.mayContain(Ljava/lang/String;)Z @ 38
+Event: 0.701 Thread 0x0000000001dbd000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002acd800 method=java.lang.CharacterData.of(I)Ljava/lang/CharacterData; @ 4
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 0.591 Thread 0x0000000001dbd000 Exception <a 'java/lang/IncompatibleClassChangeError': Found class java.lang.Object, but interface was expected> (0x000000076cd06d38) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspot\src\share\vm\interpreter\linkResolver.cp
+Event: 0.593 Thread 0x0000000001dbd000 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$ofVoidMethod$0(Lorg/junit/jupiter/engine/execution/ExecutableInvoker$ReflectiveInterceptorCall$VoidMethodInterceptorCall;Lorg/junit/jupiter/api/extension/InvocationInterceptor;Lorg/junit/
+Event: 0.598 Thread 0x0000000001dbd000 Exception <a 'java/lang/IncompatibleClassChangeError': Found class java.lang.Object, but interface was expected> (0x000000076cd7b2b8) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspot\src\share\vm\interpreter\linkResolver.cp
+Event: 0.598 Thread 0x0000000001dbd000 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$accept$0(Lorg/junit/platform/engine/TestDescriptor$Visitor;Lorg/junit/platform/engine/TestDescriptor;)V> (0x000000076cd7fb20) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk
+Event: 0.602 Thread 0x0000000001dbd000 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.containsTests(Lorg/junit/platform/engine/TestDescriptor;)Z> (0x000000076cdcb270) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspot\src\share\vm\interpreter\linkRes
+Event: 0.615 Thread 0x0000000001dbd000 Exception <a 'java/lang/IncompatibleClassChangeError': Found class java.lang.Object, but interface was expected> (0x000000076ce8d4e0) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspot\src\share\vm\interpreter\linkResolver.cp
+Event: 0.631 Thread 0x0000000001dbd000 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$comparing$77a9974f$1(Ljava/util/function/Function;Ljava/lang/Object;Ljava/lang/Object;)I> (0x000000076d01d2e8) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hot
+Event: 0.633 Thread 0x0000000001dbd000 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$thenComparing$36697e65$1(Ljava/util/Comparator;Ljava/lang/Object;Ljava/lang/Object;)I> (0x000000076d040770) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspo
+Event: 0.667 Thread 0x0000000001dbd000 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$and$0(Ljava/util/function/Predicate;Ljava/lang/Object;)Z> (0x000000076d398da0) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspot\src\share\vm\interpreter\li
+Event: 0.688 Thread 0x0000000001dbd000 Exception <a 'java/lang/IncompatibleClassChangeError': Found class java.lang.Object, but interface was expected> (0x000000076d5243a0) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u221\13320\hotspot\src\share\vm\interpreter\linkResolver.cp
+
+Events (10 events):
+Event: 0.703 loading class org/junit/jupiter/engine/extension/TimeoutConfiguration
+Event: 0.703 loading class org/junit/jupiter/engine/extension/TimeoutConfiguration done
+Event: 0.703 loading class org/junit/jupiter/engine/extension/TimeoutDuration
+Event: 0.703 loading class org/junit/jupiter/engine/extension/TimeoutDuration done
+Event: 0.703 loading class org/junit/jupiter/engine/extension/TimeoutDuration
+Event: 0.703 loading class org/junit/jupiter/engine/extension/TimeoutDuration done
+Event: 0.703 loading class org/junit/jupiter/engine/extension/TimeoutConfiguration
+Event: 0.703 loading class org/junit/jupiter/engine/extension/TimeoutConfiguration done
+Event: 0.703 loading class org/junit/jupiter/engine/extension/TimeoutConfiguration
+Event: 0.703 loading class org/junit/jupiter/engine/extension/TimeoutConfiguration done
+
+
+Dynamic libraries:
+0x000000013fe40000 - 0x000000013fe77000 	D:\java\java8\bin\java.exe
+0x0000000077350000 - 0x00000000774ef000 	C:\Windows\SYSTEM32\ntdll.dll
+0x0000000077230000 - 0x000000007734f000 	C:\Windows\system32\kernel32.dll
+0x000007fefced0000 - 0x000007fefcf37000 	C:\Windows\system32\KERNELBASE.dll
+0x000007fefd460000 - 0x000007fefd53b000 	C:\Windows\system32\ADVAPI32.dll
+0x000007fefefc0000 - 0x000007feff05f000 	C:\Windows\system32\msvcrt.dll
+0x000007fefd870000 - 0x000007fefd88f000 	C:\Windows\SYSTEM32\sechost.dll
+0x000007feff1b0000 - 0x000007feff2dc000 	C:\Windows\system32\RPCRT4.dll
+0x0000000077130000 - 0x000000007722a000 	C:\Windows\system32\USER32.dll
+0x000007feff140000 - 0x000007feff1a7000 	C:\Windows\system32\GDI32.dll
+0x000007feff630000 - 0x000007feff63e000 	C:\Windows\system32\LPK.dll
+0x000007feff2e0000 - 0x000007feff3ab000 	C:\Windows\system32\USP10.dll
+0x000007fefb850000 - 0x000007fefba45000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.24483_none_e372d88f30fbb845\COMCTL32.dll
+0x000007fefeec0000 - 0x000007fefef31000 	C:\Windows\system32\SHLWAPI.dll
+0x000007feff3b0000 - 0x000007feff3de000 	C:\Windows\system32\IMM32.DLL
+0x000007fefedb0000 - 0x000007fefeebb000 	C:\Windows\system32\MSCTF.dll
+0x0000000062470000 - 0x0000000062542000 	D:\java\java8\jre\bin\msvcr100.dll
+0x000000005c840000 - 0x000000005d0e5000 	D:\java\java8\jre\bin\server\jvm.dll
+0x000007fefa900000 - 0x000007fefa909000 	C:\Windows\system32\WSOCK32.dll
+0x000007feff5c0000 - 0x000007feff60d000 	C:\Windows\system32\WS2_32.dll
+0x000007fefe850000 - 0x000007fefe858000 	C:\Windows\system32\NSI.dll
+0x000007fefa650000 - 0x000007fefa68b000 	C:\Windows\system32\WINMM.dll
+0x000007fefbf70000 - 0x000007fefbf7c000 	C:\Windows\system32\VERSION.dll
+0x0000000077500000 - 0x0000000077507000 	C:\Windows\system32\PSAPI.DLL
+0x000007fefbb60000 - 0x000007fefbb6f000 	D:\java\java8\jre\bin\verify.dll
+0x000007fefa3b0000 - 0x000007fefa3d9000 	D:\java\java8\jre\bin\java.dll
+0x000007fef6940000 - 0x000007fef6975000 	D:\java\java8\jre\bin\jdwp.dll
+0x000007fef9940000 - 0x000007fef9948000 	D:\java\java8\jre\bin\npt.dll
+0x000007fef8210000 - 0x000007fef8233000 	D:\java\java8\jre\bin\instrument.dll
+0x000007fef99b0000 - 0x000007fef99c6000 	D:\java\java8\jre\bin\zip.dll
+0x000007fefda20000 - 0x000007fefe7ab000 	C:\Windows\system32\SHELL32.dll
+0x000007fefd260000 - 0x000007fefd45f000 	C:\Windows\system32\ole32.dll
+0x000007fefcea0000 - 0x000007fefceaf000 	C:\Windows\system32\profapi.dll
+0x000007fefa8d0000 - 0x000007fefa8d9000 	D:\java\java8\jre\bin\dt_socket.dll
+0x000007fefc5e0000 - 0x000007fefc635000 	C:\Windows\system32\mswsock.dll
+0x000007fefc040000 - 0x000007fefc047000 	C:\Windows\System32\wshtcpip.dll
+0x000007fee37d0000 - 0x000007fee38f5000 	C:\Windows\system32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:61480,suspend=y,server=n -Dvisualvm.id=151102114294276 -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:C:\Users\liren\.IntelliJIdea2019.3\system\captureAgent\debugger-agent.jar -Dfile.encoding=UTF-8 
+java_command: com.intellij.rt.junit.JUnitStarter -ideVersion5 -junit5 com.example.jdkstudy.jdk.ReentrantLockTest,test2
+java_class_path (initial): C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\lib\idea_rt.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\plugins\junit\lib\junit5-rt.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\plugins\junit\lib\junit-rt.jar;D:\java\java8\jre\lib\charsets.jar;D:\java\java8\jre\lib\deploy.jar;D:\java\java8\jre\lib\ext\access-bridge-64.jar;D:\java\java8\jre\lib\ext\cldrdata.jar;D:\java\java8\jre\lib\ext\dnsns.jar;D:\java\java8\jre\lib\ext\jaccess.jar;D:\java\java8\jre\lib\ext\jfxrt.jar;D:\java\java8\jre\lib\ext\localedata.jar;D:\java\java8\jre\lib\ext\nashorn.jar;D:\java\java8\jre\lib\ext\sunec.jar;D:\java\java8\jre\lib\ext\sunjce_provider.jar;D:\java\java8\jre\lib\ext\sunmscapi.jar;D:\java\java8\jre\lib\ext\sunpkcs11.jar;D:\java\java8\jre\lib\ext\zipfs.jar;D:\java\java8\jre\lib\javaws.jar;D:\java\java8\jre\lib\jce.jar;D:\java\java8\jre\lib\jfr.jar;D:\java\java8\jre\lib\jfxswt.jar;D:\java\java8\jre\lib\jsse.jar;D:\java\java8\jre\lib\management-agent.jar;D:\java\java8\jre\lib\plugin.jar;D:\java\java8\jre\lib\resources.jar;D:\java\java8\jre\lib\rt.jar;D:\work\jdk-study\target\test-classes;D:\work\jdk-study\target\classes;C:\Users\liren\.m2\repository\org\springframework\boot\spring-boot-starter-web\2.2.5.RELEASE\spring-boot-starter-web-2.2.5.RELEASE.jar;C:\Users\liren\.m2\repository\org\springframework\boot\spring-boot-starter\2.2.5.RELEASE\spring-boot-starter-2.2.5.RELEASE.jar;C:\Users\liren\.m2\repository\org\springframework\boot\spring-boot-starter-logging\2.2.5.RELEASE\spring-boot-starter-logging-2.2.5.RELEASE.jar;C:\Users\liren\.m2\repository\ch\qos\logback\logback-classic\1.2.3\logback-classic-1.2.3.jar;C:\Users\liren\.m2\repository\ch\qos\logback\logback-core\1.2.3\logback-core-1.2.3.jar;C:\Users\liren\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.12.1\log4j-to-slf4j-2.12.1.jar;C:\Users\liren\.m2\repository\org\apache\logging\log4j\log4j-api\2.12.1\log4j-api-2.12.1.jar;C:\Users\liren\.m2\repository\org\slf4j\jul-to-slf4
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=D:\java\java8
+CLASSPATH=.;D:\java\java8\lib;D:\java\java8\lib\tools.jar
+PATH=C:\Program Files (x86)\Common Files\NetSarang;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;D:\Git\cmd;D:\Git\mingw64\libexec\git-core;D:\java\java8\bin;C:\Program Files (x86)\Common Files\NetSarang;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;D:\Git\cmd;D:\Git\mingw64\libexec\git-core;D:\java\java8\bin;C:\Program Files (x86)\Common Files\NetSarang;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;D:\Git\cmd;D:\Git\mingw64\libexec\git-core;D:\java\java8\bin;C:\Windows\System32;D:\apache-maven-3.6.3\bin;;D:\apache-maven-3.6.3\bin;;D:\apache-maven-3.6.3\bin;D:\软件\gradle\gradle-5.2.1\bin;C:\Users\liren\AppData\Local\BypassRuntm;
+USERNAME=liren
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 60 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 (6.1.7601.24535)
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 60 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, rtm, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2
+
+Memory: 4k page, physical 16650652k(10771128k free), swap 33299404k(24803176k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.221-b11) for windows-amd64 JRE (1.8.0_221-b11), built on Jul  4 2019 04:39:29 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Wed Apr 22 11:37:06 2020
+timezone: 中国标准时间
+elapsed time: 0 seconds (0d 0h 0m 0s)
+
